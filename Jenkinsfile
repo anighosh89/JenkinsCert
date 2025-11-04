@@ -1,7 +1,10 @@
 pipeline {
     agent any
 
-
+    tools {
+        jdk 'JDK17'
+        maven 'Maven3'
+    }
   triggers {
             cron '0 0 * * 0' // Runs at midnight every Sunday (every 7 days)
         }
@@ -19,9 +22,10 @@ pipeline {
             // write your logic here
             post {
                 always {
-                    junit 'target/surefire-reports/'
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
     }
 }
+
