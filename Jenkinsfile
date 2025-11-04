@@ -5,7 +5,9 @@ pipeline {
         jdk 'JDK17'
         maven 'Maven3'
     }
-
+  triggers {
+            cron '0 0 * * 0' // Runs at midnight every Sunday (every 7 days)
+        }
     stages {
         stage('Checkout') {
             // write your logic here
